@@ -1,4 +1,5 @@
-﻿using Likja.Domain.Common;
+﻿using Likja.Conthread.ThirdParty;
+using Likja.Domain.Common;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,10 +25,13 @@ namespace Likja.Conthread
         [NotMapped]
         public string HashId
         {
-            get
-            {
-                return Id.ConvertToHash();
-            }
+            get { return Id.ConvertToHash(); }
+        }
+
+        [NotMapped]
+        public string SlugTitle
+        {
+            get { return Title.GenerateSlug(); }
         }
     }
 }
